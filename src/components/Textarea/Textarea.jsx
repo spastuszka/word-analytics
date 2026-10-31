@@ -7,7 +7,13 @@ export const Textarea = () => {
     <textarea
       value={text}
       onChange={(e) => {
-        const newText = e.target.value
+        let newText = e.target.value
+        // Example of input validation: Prevent script tags from being entered
+        if (newText.includes('<script>')) {
+          alert('No script tags allowed!')
+          newText = newText.replace('<script>', '')
+        }
+
         setText(newText)
         console.log('Textarea value changed:', newText)
       }}
