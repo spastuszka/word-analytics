@@ -8,9 +8,9 @@ const RULES = [
   { pattern: /https?:\/\/\S+/gi, message: 'No links allowed!' },
 ]
 
-export const Textarea = () => {
+export const Textarea = ({ text, setText }) => {
   // Controlled textarea component with Event handling and state management
-  const [text, setText] = useState('')
+
   const [warning, setWarning] = useState('')
 
   const handleChange = (e) => {
