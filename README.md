@@ -1,16 +1,48 @@
-# React + Vite
+# Word Analytics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A text analyzer built with React + Vite. Type or paste text and see live statistics: word count, character count and how many characters remain for Twitter / X and Instagram / Facebook. The project started as an exercise from the [bytegrad.com](https://bytegrad.com/) course, but the code has been rewritten and extended with my own solutions — it is not a copy of the original.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Live word and character count
+- Remaining characters for Twitter / X (280) and Instagram / Facebook (2200)
+- Counter turns into a "limit" style when the value goes below zero
+- Input validation: `<script>` tags, HTML tags, `@` symbols and links are stripped from the text, with an inline warning explaining what was removed
+- Styling based on CSS Modules
 
-## React Compiler
+## What I changed compared to the course
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Rule-based input validation — a `RULES` array of `{ pattern, message }` instead of a chain of `if` statements, so adding a new rule is a one-line change
+- Several warnings can show up at once when the text breaks more than one rule
+- Stats computed inline in `Container` and spread into `Stats` as props
+- Reusable `Stat` component with a modifier class for negative values
+- Character limits extracted to `lib/constants.js`
+- Merged Instagram and Facebook into one stat, since both share the same limit
+- Component structure (`App`, `Container`, `Textarea`, `Stats`, `Warning`, `Header`, `Footer`, `BackgroundImage`) based on my own analysis of responsibility separation
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React 19](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- CSS Modules
+- ESLint
+
+## Running locally
+
+```bash
+npm install
+npm run dev
+```
+
+Available scripts:
+
+| Command           | Description                   |
+| ----------------- | ----------------------------- |
+| `npm run dev`     | starts the development server |
+| `npm run build`   | builds the production version |
+| `npm run preview` | previews the production build |
+| `npm run lint`    | runs ESLint                   |
+
+## Note
+
+This project is for educational purposes — it was built while learning React through a course from [bytegrad.com](https://bytegrad.com/), and the code was independently modified and analyzed to reinforce that knowledge.
