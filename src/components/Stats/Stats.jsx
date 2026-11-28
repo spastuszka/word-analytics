@@ -1,15 +1,15 @@
 export const Stats = ({
   numberOfCharacters,
-  instagramCharactersLeft,
-  facebookCharactersLeft,
+  twitterCharactersLeft,
+  metaCharactersLeft,
   numberOfWords,
 }) => {
   return (
     <section className="stats">
       <Stat number={numberOfWords} label="Words" />
       <Stat number={numberOfCharacters} label="Characters" />
-      <Stat number={instagramCharactersLeft} label="Instagram" />
-      <Stat number={facebookCharactersLeft} label="Facebook" />
+      <Stat number={twitterCharactersLeft} label="Twitter / X" />
+      <Stat number={metaCharactersLeft} label="Instagram / Facebook" />
     </section>
   )
 }
